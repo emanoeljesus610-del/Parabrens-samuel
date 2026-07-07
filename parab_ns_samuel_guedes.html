@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parabéns, Chefe Samuel!</title>
+    <!-- Tailwind CSS para um design moderno e responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(129, 140, 248, 0.5), 0 0 20px rgba(129, 140, 248, 0.3);
+        }
+
+        .animate-bounce-slow {
+            animation: bounce 3s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-5%);
+                animation-timing-function: cubic-bezier(0.8,0,1,1);
+            }
+            50% {
+                transform: none;
+                animation-timing-function: cubic-bezier(0,0,0.2,1);
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-100 flex flex-col justify-between items-center p-4 md:p-8 relative">
+
+    <!-- Canvas para os Confetes de Celebração -->
+    <canvas id="confetti-canvas" class="absolute inset-0 pointer-events-none z-50 w-full h-full"></canvas>
+
+    <!-- Cabeçalho -->
+    <header class="w-full max-w-4xl text-center my-6 z-10">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 neon-glow animate-pulse">
+            Vai intende oque ser passa na mente do emanoel
+        </h1>
+        <p class="text-slate-400 text-sm md:text-base mt-2">Validação de Credenciais de Liderança</p>
+    </header>
+
+    <!-- Área Principal de Conteúdo Interativo -->
+    <main class="w-full max-w-lg z-10 flex-grow flex items-center justify-center py-6">
+        
+        <!-- STEP 1: Confirmação de Identidade -->
+        <div id="step-1" class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl transition-all duration-500 transform scale-100 flex flex-col justify-between">
+            <div class="text-center">
+                <div class="inline-flex p-3 rounded-full bg-indigo-500/10 text-indigo-400 mb-4 animate-bounce-slow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-2">Primeiro, vamos confirmar...</h2>
+                <p class="text-slate-300 text-lg mb-8">Você é o <span class="text-indigo-400 font-semibold">Samuel Guedes</span>?</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button onclick="nextStep(1, 'sim')" class="py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 font-semibold text-lg transition-all duration-300 transform active:scale-95 shadow-lg shadow-indigo-500/20">
+                    Sim
+                </button>
+                <button onclick="nextStep(1, 'talvez')" class="py-4 px-6 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-lg transition-all duration-300 transform active:scale-95">
+                    Talvez Sim
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: Confirmação do Aniversário -->
+        <div id="step-2" class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl transition-all duration-500 transform scale-95 hidden opacity-0 flex flex-col justify-between">
+            <div class="text-center">
+                <div class="inline-flex p-3 rounded-full bg-purple-500/10 text-purple-400 mb-4 animate-bounce-slow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-2">Excelente confirmação!</h2>
+                <p class="text-slate-300 text-lg mb-8">Você está fazendo aniversário <span class="text-purple-400 font-semibold">Hoje</span>?</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button onclick="nextStep(2, 'certeza')" class="py-4 px-6 rounded-2xl bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 font-semibold text-lg transition-all duration-300 transform active:scale-95 shadow-lg shadow-purple-500/20">
+                    Com certeza!
+                </button>
+                <button onclick="nextStep(2, 'sim')" class="py-4 px-6 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-lg transition-all duration-300 transform active:scale-95">
+                    Sim, com toda certeza
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 3: Entrada de Idade -->
+        <div id="step-3" class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl transition-all duration-500 transform scale-95 hidden opacity-0 flex flex-col justify-between">
+            <div class="text-center">
+                <div class="inline-flex p-3 rounded-full bg-pink-500/10 text-pink-400 mb-4 animate-bounce-slow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-2">Quase lá!</h2>
+                <p class="text-slate-300 text-lg mb-6">Você está completando quantos anos?</p>
+            </div>
+            
+            <div class="flex flex-col gap-4">
+                <input type="number" id="age-input" placeholder="Digite a sua idade..." min="1" max="120" 
+                       class="w-full bg-slate-900/50 border border-slate-700 rounded-2xl py-4 px-6 text-center text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300">
+                
+                <button onclick="submitAge()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 font-bold text-lg transition-all duration-300 transform active:scale-95 shadow-lg shadow-pink-500/20">
+                    Revelar Minha Surpresa! 🎁
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP FINAL: Surpresa & Vídeo -->
+        <div id="step-final" class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl transition-all duration-700 transform scale-95 hidden opacity-0 flex flex-col justify-between max-w-xl">
+            <div class="text-center">
+                <!-- Ícone Festivo -->
+                <div class="inline-flex p-3 rounded-full bg-emerald-500/10 text-emerald-400 mb-2 animate-bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                
+                <h2 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 mb-4">
+                    PARABÉNS, SAMUEL! 🥳🎉
+                </h2>
+
+                <!-- Mensagem Dinâmica Baseada na Idade -->
+                <p id="dynamic-message" class="text-slate-200 text-lg leading-relaxed mb-6 italic px-4 py-3 bg-white/5 rounded-2xl border border-white/5">
+                    Carregando a melhor mensagem para você...
+                </p>
+
+                <!-- Player do Vídeo do Usuário -->
+                <div class="relative rounded-2xl overflow-hidden border border-slate-700 bg-black/50 mb-6 aspect-video flex items-center justify-center min-h-[240px]">
+                    <video id="celebration-video" class="w-full h-full object-contain" controls preload="auto" playsinline>
+                        <source src="./Video%20Zueirooo.mp4" type="video/mp4">
+                        Seu navegador não suporta o formato de vídeo.
+                    </video>
+                </div>
+
+                <p class="text-slate-400 text-xs mb-4">
+                    Obs: o vídeo está no mesmo diretório do site e deve aparecer aqui quando a página for atualizada.
+                </p>
+
+                <!-- Botão de Reiniciar -->
+                <button onclick="resetApp()" class="py-2.5 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold transition-all">
+                    Responder de novo
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="w-full text-center py-4 text-slate-500 text-xs z-10 border-t border-slate-800/50 mt-6">
+        Feito com 💙 pelo Seu Pupilo. Nenhum banco de dados foi corrompido na fabricação deste site.
+    </footer>
+
+    <!-- Script de Funcionamento -->
+    <script>
+        // Função para transicionar entre os passos com efeito suave de fade
+        function nextStep(current, choice) {
+            const currentEl = document.getElementById(`step-${current}`);
+            const nextEl = document.getElementById(`step-${current + 1}`);
+
+            // Pequeno feedback de clique
+            console.log(`Step ${current} escolhido: ${choice}`);
+
+            // Transição suave de saída
+            currentEl.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                currentEl.classList.add('hidden');
+                
+                // Preparação para entrada do próximo
+                nextEl.classList.remove('hidden');
+                setTimeout(() => {
+                    nextEl.classList.remove('opacity-0', 'scale-95');
+                    nextEl.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            }, 300);
+        }
+
+        // Processa a idade digitada e monta a mensagem personalizada
+        function submitAge() {
+            const ageInput = document.getElementById('age-input');
+            const ageVal = parseInt(ageInput.value);
+
+            if (!ageVal || ageVal <= 0 || ageVal > 120) {
+                // Criação de uma notificação customizada para não usar alert()
+                showToast("Por favor, digite uma idade válida para calibrar o nosso sistema!");
+                return;
+            }
+
+            // Gerando a mensagem dinâmica baseada na idade
+            let textMessage = "";
+            if (ageVal < 25) {
+                textMessage = `Com apenas ${ageVal} anos e já é o chefe supremo? O verdadeiro prodígio da tecnologia! Que orgulho da nossa equipe trabalhar com um líder tão jovem e brilhante. Parabéns!`;
+            } else if (ageVal >= 25 && ageVal <= 35) {
+                textMessage = `Parabéns, Samuel! Completar ${ageVal} anos com toda essa energia e sabedoria é de se aplaudir. Você é o verdadeiro herói do suporte que lidera a equipe contra qualquer bug no sistema!`;
+            } else if (ageVal > 35 && ageVal <= 49) {
+                textMessage = `Chegar aos ${ageVal} anos com essa disposição de garoto e o conhecimento de um verdadeiro mestre dos magos! Um brinde à sua liderança exemplar que mantém o nosso sistema sempre rodando. Feliz Aniversário!`;
+            } else {
+                textMessage = `Nível lendário desbloqueado! Com ${ageVal} anos de pura experiência, você é o comandante definitivo que faz qualquer código funcionar só de olhar. Parabéns, Samuel, muitas felicidades e saúde!`;
+            }
+
+            // Atualiza o elemento de texto
+            document.getElementById('dynamic-message').innerText = textMessage;
+
+            // Avança para o passo final
+            const currentEl = document.getElementById('step-3');
+            const nextEl = document.getElementById('step-final');
+
+            currentEl.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                currentEl.classList.add('hidden');
+                nextEl.classList.remove('hidden');
+                setTimeout(() => {
+                    nextEl.classList.remove('opacity-0', 'scale-95');
+                    nextEl.classList.add('opacity-100', 'scale-100');
+                    
+                    // Inicia os confetes e o vídeo
+                    startConfetti();
+                    const video = document.getElementById('celebration-video');
+                    if (video) {
+                        video.play().catch(err => {
+                            console.log("Auto-play impedido pelo navegador, aguardando clique do usuário.", err);
+                        });
+                    }
+                }, 50);
+            }, 300);
+        }
+
+        // Função de Reset
+        function resetApp() {
+            const finalEl = document.getElementById('step-final');
+            const startEl = document.getElementById('step-1');
+            const video = document.getElementById('celebration-video');
+            
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+            
+            document.getElementById('age-input').value = "";
+            stopConfetti();
+
+            finalEl.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                finalEl.classList.add('hidden');
+                startEl.classList.remove('hidden');
+                setTimeout(() => {
+                    startEl.classList.remove('opacity-0', 'scale-95');
+                    startEl.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            }, 300);
+        }
+
+        // Toast de aviso para evitar o uso de alert() padrão
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-5 right-5 glass-card bg-rose-900/90 text-white py-3 px-6 rounded-2xl shadow-2xl z-50 transition-all duration-500 transform translate-y-10 opacity-0 border-rose-500/30";
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 100);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }, 3500);
+        }
+
+        /* --- SCRIPT DOS CONFETES --- */
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confettiInterval = null;
+        let confettis = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Confetti {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height - 20;
+                this.size = Math.random() * 8 + 6;
+                this.color = `hsl(${Math.random() * 360}, 80%, 60%)`;
+                this.speed = Math.random() * 3 + 2;
+                this.angle = Math.random() * 360;
+                this.spinSpeed = Math.random() * 4 - 2;
+            }
+
+            update() {
+                this.y += this.speed;
+                this.angle += this.spinSpeed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.angle * Math.PI) / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function startConfetti() {
+            confettis = [];
+            for (let i = 0; i < 150; i++) {
+                confettis.push(new Confetti());
+            }
+
+            if (confettiInterval) clearInterval(confettiInterval);
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                confettis.forEach(c => {
+                    c.update();
+                    c.draw();
+                });
+                confettiInterval = requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        function stopConfetti() {
+            if (confettiInterval) {
+                cancelAnimationFrame(confettiInterval);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+    </script>
+</body>
+</html>
